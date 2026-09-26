@@ -1,4 +1,4 @@
-music.jsonテンプレ
+### music.jsonテンプレ
 ```
   {
     "id": "example-song",
@@ -61,7 +61,8 @@ music.jsonテンプレ
   }
 ```
 **,忘れずに**
-categories内の候補
+
+### categories内の候補
 ```
 オリジナル
 リミックス
