@@ -1,4 +1,4 @@
-### music.jsonテンプレ
+## music.jsonテンプレ
 ```
   {
     "id": "example-song",
@@ -60,7 +60,7 @@
     ]
   }
 ```
-**,忘れずに**
+`,`**忘れずに**
 
 ### categories内の候補
 ```
