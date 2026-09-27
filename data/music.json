@@ -1,74 +1,55 @@
 [
-  {
-    "id": "shumatsuno-otenki",
-
-    "title": "終末のお天気",
-    "titleReading": "しゅうまつのおてんき",
-    "titleEn": "",
-
-    "vocals": [
-      "flower"
-    ],
-
-    "releaseDate": "2018-02-14",
-
-    "albums": [
-    ],
-
-    "categories": [
-      "オリジナル"
-    ],
-
-    "girls": [
-      "Oteko"
-    ],
-
-    "duration": 253,
-
-    "tempo": [
-      242
-    ],
-
-    "timeSignature": [
-    ],
-
-    "key": [
-    ],
-
-    "lyricsStart": "言葉を選んで 空気を読みまくって 生きてくのしんどくない?",
-
-    "description": "初投稿\n唐突に隕石が降ってきたお話",
-
-    "urls": {
-      "niconico": "https://www.nicovideo.jp/watch/sm32737912"
-    },
-
-    "notes": [
-      "伝説の始まり"
-    ],
-
-    "related": [
-    ],
-    
-    "sources": [
-      {
-        "name": "いよわ「終末のお天気 / flower 【初投稿】」ニコニコ動画（2026/09/27）",
-        "url": "https://www.nicovideo.jp/watch/sm32737912"
-      },
-      {
-        "name": "「終末のお天気」Wikipedia（2026/09/27）",
-        "url": "https://ja.wikipedia.org/wiki/終末のお天気"
-      },
-      {
-        "name": "「いよわガールズ」ピクシブ百科事典（2026/09/27）",
-        "url": "https://dic.pixiv.net/a/いよわガールズ"
-      },
-      {
-        "name": "「終末のお天気」初音ミク Wiki - atwiki（2026/09/27）",
-        "url": "https://w.atwiki.jp/hmiku/pages/47312.html"
-      }
-    ]
+{
+  "id": "shumatsuno-otenki",
+  "title": "終末のお天気",
+  "titleReading": "しゅうまつのおてんき",
+  "titleEn": "",
+  "vocals": [
+    "flower"
+  ],
+  "releaseDate": "2018-02-14",
+  "albums": [],
+  "categories": [
+    "オリジナル"
+  ],
+  "girls": [
+    "oteko"
+  ],
+  "duration": 253,
+  "tempo": [
+    242
+  ],
+  "timeSignature": [],
+  "key": [],
+  "lyricsStart": "言葉を選んで 空気を読みまくって 生きてくのしんどくない?",
+  "description": "初投稿\n唐突に隕石が降ってきたお話",
+  "urls": {
+    "youtube": "",
+    "niconico": "https://www.nicovideo.jp/watch/sm32737912"
   },
+  "notes": [
+    "伝説の始まり"
+  ],
+  "related": [],
+  "sources": [
+    {
+      "name": "いよわ「終末のお天気 / flower 【初投稿】」ニコニコ動画（2026/09/27）",
+      "url": "https://www.nicovideo.jp/watch/sm32737912"
+    },
+    {
+      "name": "「終末のお天気」Wikipedia（2026/09/27）",
+      "url": "https://ja.wikipedia.org/wiki/終末のお天気"
+    },
+    {
+      "name": "「いよわガールズ」ピクシブ百科事典（2026/09/27）",
+      "url": "https://dic.pixiv.net/a/いよわガールズ"
+    },
+    {
+      "name": "「終末のお天気」初音ミク Wiki - atwiki（2026/09/27）",
+      "url": "https://w.atwiki.jp/hmiku/pages/47312.html"
+    }
+  ]
+},
 
 
 ]
