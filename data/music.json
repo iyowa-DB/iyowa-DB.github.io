@@ -1,6 +1,6 @@
 [
   {
-    "id": "Syumatsuno-otenki",
+    "id": "shumatsuno-otenki",
 
     "title": "終末のお天気",
     "titleReading": "しゅうまつのおてんき",
@@ -30,28 +30,24 @@
     ],
 
     "timeSignature": [
-      "4/4"
     ],
 
     "key": [
-      "C major"
     ],
 
-    "lyricsStart": "歌詞の冒頭",
+    "lyricsStart": "言葉を選んで 空気を読みまくって 生きてくのしんどくない?",
 
-    "description": "曲についての解説",
+    "description": "初投稿<br>唐突に隕石が降ってきたお話（いよわ「終末のお天気 / flower 【初投稿】」（ニコニコ動画）概要欄より）",
 
     "urls": {
-      "youtube": "https://...",
-      "niconico": "https://..."
+      "niconico": "https://www.nicovideo.jp/watch/sm32737912"
     },
 
     "notes": [
-      "備考"
+      "伝説の始まり"
     ],
 
     "related": [
-      "関連曲"
     ]
   }
 ]
