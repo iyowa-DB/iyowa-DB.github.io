@@ -1,5 +1,5 @@
 ## music.jsonテンプレ
-[https://iyowa-db.github.io/music-json.html](https://iyowa-db.github.io/music-json.html)
+[https://iyowa-db.github.io/data/music-json.html](https://iyowa-db.github.io/data/music-json.html)
 ```
   {
     "id": "example-song",
