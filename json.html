@@ -1,0 +1,1192 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>JSON Generator - Iyowa Database</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        "Noto Sans JP",
+        sans-serif;
+      background: #fff;
+      color: #111;
+      line-height: 1.6;
+    }
+
+    header {
+      border-bottom: 1px solid #ddd;
+      padding: 20px 24px;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 22px;
+    }
+
+    header p {
+      margin: 4px 0 0;
+      color: #666;
+      font-size: 14px;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 32px 20px 60px;
+    }
+
+    section {
+      margin-bottom: 32px;
+    }
+
+    h2 {
+      font-size: 18px;
+      margin: 0 0 16px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .field {
+      margin-bottom: 18px;
+    }
+
+    label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .hint {
+      color: #777;
+      font-size: 13px;
+      margin-top: 3px;
+    }
+
+    input,
+    textarea,
+    select {
+      width: 100%;
+      padding: 9px 10px;
+      border: 1px solid #bbb;
+      border-radius: 4px;
+      background: #fff;
+      color: #111;
+      font: inherit;
+    }
+
+    textarea {
+      min-height: 90px;
+      resize: vertical;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+      outline: none;
+      border-color: #111;
+    }
+
+    .array-item {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .array-item input,
+    .array-item select {
+      flex: 1;
+    }
+
+    button {
+      padding: 8px 14px;
+      border: 1px solid #111;
+      border-radius: 4px;
+      background: #111;
+      color: #fff;
+      cursor: pointer;
+      font: inherit;
+    }
+
+    button:hover {
+      opacity: 0.8;
+    }
+
+    button.secondary {
+      background: #fff;
+      color: #111;
+    }
+
+    button.delete {
+      border-color: #bbb;
+      background: #fff;
+      color: #555;
+      white-space: nowrap;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 24px;
+    }
+
+    .error {
+      color: #b00020;
+      margin-top: 12px;
+      white-space: pre-wrap;
+    }
+
+    .success {
+      color: #187a36;
+      margin-top: 12px;
+    }
+
+    #jsonOutput {
+      min-height: 400px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 13px;
+    }
+
+    .source-item {
+      border: 1px solid #ddd;
+      padding: 12px;
+      margin-bottom: 10px;
+    }
+
+    .source-item input {
+      margin-bottom: 8px;
+    }
+
+    .source-item .delete {
+      margin-top: 2px;
+    }
+
+    .multi-select {
+      min-height: 150px;
+    }
+
+    .duration-input {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .duration-input input {
+      max-width: 150px;
+    }
+
+    @media (max-width: 650px) {
+      .duration-input input {
+        max-width: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>Iyowa Database JSON Generator</h1>
+  <p>曲データを入力して music.json 用のJSONを生成します。</p>
+</header>
+
+<main>
+
+  <section>
+    <h2>基本情報</h2>
+
+    <div class="field">
+      <label for="id">ID *</label>
+      <input id="id" type="text" placeholder="shumatsuno-otenki">
+      <div class="hint">曲名とは別の、変更しない固有IDです。</div>
+    </div>
+
+    <div class="field">
+      <label for="title">曲名 *</label>
+      <input id="title" type="text" placeholder="終末のお天気">
+    </div>
+
+    <div class="field">
+      <label for="titleReading">曲名の読み</label>
+      <input id="titleReading" type="text" placeholder="しゅうまつのおてんき">
+    </div>
+
+    <div class="field">
+      <label for="titleEn">英語名</label>
+      <input id="titleEn" type="text">
+    </div>
+  </section>
+
+
+  <section>
+    <h2>曲情報</h2>
+
+    <div class="field">
+      <label>ボーカル</label>
+      <div id="vocals"></div>
+
+      <button type="button" class="secondary"
+              onclick="addArrayItem('vocals')">
+        + ボーカルを追加
+      </button>
+    </div>
+
+
+    <div class="field">
+      <label for="releaseDate">リリース日</label>
+      <input
+        id="releaseDate"
+        type="text"
+        inputmode="numeric"
+        placeholder="2026/9/27"
+      >
+      <div class="hint">
+        例：2026/9/27 → JSONでは 2026-09-27
+      </div>
+    </div>
+
+
+    <div class="field">
+      <label>アルバムID</label>
+      <div id="albums"></div>
+
+      <button type="button" class="secondary"
+              onclick="addArrayItem('albums')">
+        + アルバムを追加
+      </button>
+    </div>
+
+
+    <div class="field">
+      <label>カテゴリ</label>
+
+      <div id="categories"></div>
+
+      <button type="button" class="secondary"
+              onclick="addCategory()">
+        + カテゴリを追加
+      </button>
+
+      <div class="hint">
+        複数のカテゴリを設定できます。
+      </div>
+    </div>
+
+
+    <div class="field">
+      <label>いよわガールズID</label>
+
+      <div id="girls"></div>
+
+      <button type="button" class="secondary"
+              onclick="addArrayItem('girls')">
+        + ガールを追加
+      </button>
+    </div>
+
+
+    <div class="field">
+      <label for="duration">長さ</label>
+
+      <div class="duration-input">
+        <input
+          id="duration"
+          type="text"
+          inputmode="numeric"
+          placeholder="3:14"
+        >
+      </div>
+
+      <div class="hint">
+        例：3:14 → JSONでは 194
+      </div>
+    </div>
+
+
+    <div class="field">
+      <label>BPM</label>
+
+      <div id="tempo"></div>
+
+      <button type="button" class="secondary"
+              onclick="addArrayItem('tempo', 'number')">
+        + BPMを追加
+      </button>
+    </div>
+
+
+    <div class="field">
+      <label>拍子</label>
+
+      <div id="timeSignature"></div>
+
+      <button type="button" class="secondary"
+              onclick="addArrayItem('timeSignature')">
+        + 拍子を追加
+      </button>
+    </div>
+
+
+    <div class="field">
+      <label>キー</label>
+
+      <div id="key"></div>
+
+      <button type="button" class="secondary"
+              onclick="addKey()">
+        + キーを追加
+      </button>
+
+      <div class="hint">
+        曲中で変化する場合は複数登録できます。
+      </div>
+    </div>
+  </section>
+
+
+  <section>
+    <h2>説明・歌詞</h2>
+
+    <div class="field">
+      <label for="lyricsStart">歌詞冒頭</label>
+
+      <textarea
+        id="lyricsStart"
+        placeholder="短い歌詞の冒頭"
+      ></textarea>
+
+      <div class="hint">
+        著作権に配慮して、必要最小限の短い引用にしてください。
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="description">説明</label>
+
+      <textarea
+        id="description"
+        placeholder="曲についての説明"
+      ></textarea>
+    </div>
+  </section>
+
+
+  <section>
+    <h2>動画URL</h2>
+
+    <div class="field">
+      <label for="youtube">YouTube</label>
+
+      <input
+        id="youtube"
+        type="url"
+        placeholder="https://www.youtube.com/watch?v=..."
+      >
+    </div>
+
+    <div class="field">
+      <label for="niconico">ニコニコ動画</label>
+
+      <input
+        id="niconico"
+        type="url"
+        placeholder="https://www.nicovideo.jp/watch/..."
+      >
+    </div>
+  </section>
+
+
+  <section>
+    <h2>メモ・関連曲</h2>
+
+    <div class="field">
+      <label>メモ</label>
+
+      <div id="notes"></div>
+
+      <button type="button" class="secondary"
+              onclick="addArrayItem('notes')">
+        + メモを追加
+      </button>
+    </div>
+
+
+    <div class="field">
+      <label>関連曲ID</label>
+
+      <div id="related"></div>
+
+      <button type="button" class="secondary"
+              onclick="addArrayItem('related')">
+        + 関連曲を追加
+      </button>
+    </div>
+  </section>
+
+
+  <section>
+    <h2>出典</h2>
+
+    <div id="sources"></div>
+
+    <button type="button" class="secondary"
+            onclick="addSource()">
+      + 出典を追加
+    </button>
+  </section>
+
+
+  <section>
+    <h2>生成</h2>
+
+    <div class="actions">
+
+      <button type="button" onclick="generateJSON()">
+        JSONを生成
+      </button>
+
+      <button type="button" class="secondary"
+              onclick="copyJSON()">
+        JSONをコピー
+      </button>
+
+      <button type="button" class="secondary"
+              onclick="downloadJSON()">
+        JSONをダウンロード
+      </button>
+
+      <button type="button" class="secondary"
+              onclick="clearForm()">
+        入力をクリア
+      </button>
+
+    </div>
+
+    <div id="error" class="error"></div>
+    <div id="success" class="success"></div>
+
+    <textarea
+      id="jsonOutput"
+      readonly
+      placeholder="ここにJSONが表示されます。"
+    ></textarea>
+  </section>
+
+</main>
+
+
+<script>
+
+/* =========================
+   設定
+========================= */
+
+const categories = [
+  "オリジナル",
+  "リミックス",
+  "カバー",
+  "セルフカバー",
+  "インスト",
+  "アレンジ",
+  "書き下ろし",
+  "提供曲",
+  "コラボレーション",
+  "ゲーム関連",
+  "アニメ関連",
+  "映画関連"
+];
+
+
+const keys = [
+  "C",
+  "Cm",
+  "C♯",
+  "C♯m",
+  "D♭",
+  "D♭m",
+  "D",
+  "Dm",
+  "D♯",
+  "D♯m",
+  "E♭",
+  "E♭m",
+  "E",
+  "Em",
+  "F",
+  "Fm",
+  "F♯",
+  "F♯m",
+  "G♭",
+  "G♭m",
+  "G",
+  "Gm",
+  "G♯",
+  "G♯m",
+  "A♭",
+  "A♭m",
+  "A",
+  "Am",
+  "A♯",
+  "A♯m",
+  "B♭",
+  "B♭m",
+  "B",
+  "Bm"
+];
+
+
+const arrayTypes = {
+  vocals: "text",
+  albums: "text",
+  girls: "text",
+  tempo: "number",
+  timeSignature: "text",
+  notes: "text",
+  related: "text"
+};
+
+
+/* =========================
+   今日の日付
+========================= */
+
+function getToday() {
+
+  const date = new Date();
+
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
+
+  return `${year}/${month}/${day}`;
+}
+
+
+/* =========================
+   配列入力
+========================= */
+
+function addArrayItem(name, type = null, value = "") {
+
+  const container =
+    document.getElementById(name);
+
+  const div =
+    document.createElement("div");
+
+  div.className = "array-item";
+
+  const input =
+    document.createElement("input");
+
+  input.type =
+    type || arrayTypes[name] || "text";
+
+  input.value = value;
+
+  if (input.type === "number") {
+    input.min = "0";
+  }
+
+  const deleteButton =
+    document.createElement("button");
+
+  deleteButton.type = "button";
+  deleteButton.className = "delete";
+  deleteButton.textContent = "削除";
+
+  deleteButton.onclick = () => {
+    div.remove();
+  };
+
+  div.appendChild(input);
+  div.appendChild(deleteButton);
+
+  container.appendChild(div);
+}
+
+
+/* =========================
+   カテゴリ
+========================= */
+
+function addCategory(value = "") {
+
+  const container =
+    document.getElementById("categories");
+
+  const div =
+    document.createElement("div");
+
+  div.className = "array-item";
+
+  const select =
+    document.createElement("select");
+
+  const empty =
+    document.createElement("option");
+
+  empty.value = "";
+  empty.textContent = "カテゴリを選択";
+
+  select.appendChild(empty);
+
+  categories.forEach(category => {
+
+    const option =
+      document.createElement("option");
+
+    option.value = category;
+    option.textContent = category;
+
+    if (category === value) {
+      option.selected = true;
+    }
+
+    select.appendChild(option);
+  });
+
+  const deleteButton =
+    document.createElement("button");
+
+  deleteButton.type = "button";
+  deleteButton.className = "delete";
+  deleteButton.textContent = "削除";
+
+  deleteButton.onclick = () => {
+    div.remove();
+  };
+
+  div.appendChild(select);
+  div.appendChild(deleteButton);
+
+  container.appendChild(div);
+}
+
+
+/* =========================
+   キー
+========================= */
+
+function addKey(value = "") {
+
+  const container =
+    document.getElementById("key");
+
+  const div =
+    document.createElement("div");
+
+  div.className = "array-item";
+
+  const select =
+    document.createElement("select");
+
+  const empty =
+    document.createElement("option");
+
+  empty.value = "";
+  empty.textContent = "キーを選択";
+
+  select.appendChild(empty);
+
+  keys.forEach(key => {
+
+    const option =
+      document.createElement("option");
+
+    option.value = key;
+    option.textContent = key;
+
+    if (key === value) {
+      option.selected = true;
+    }
+
+    select.appendChild(option);
+  });
+
+  const deleteButton =
+    document.createElement("button");
+
+  deleteButton.type = "button";
+  deleteButton.className = "delete";
+  deleteButton.textContent = "削除";
+
+  deleteButton.onclick = () => {
+    div.remove();
+  };
+
+  div.appendChild(select);
+  div.appendChild(deleteButton);
+
+  container.appendChild(div);
+}
+
+
+/* =========================
+   出典
+========================= */
+
+function addSource(name = "", url = "") {
+
+  const container =
+    document.getElementById("sources");
+
+  const div =
+    document.createElement("div");
+
+  div.className = "source-item";
+
+  const nameInput =
+    document.createElement("input");
+
+  nameInput.type = "text";
+  nameInput.placeholder =
+    "「」(2026/09/27)";
+
+  nameInput.value =
+    name || `「」(${getToday()})`;
+
+
+  const urlInput =
+    document.createElement("input");
+
+  urlInput.type = "url";
+  urlInput.placeholder =
+    "https://...";
+
+  urlInput.value = url;
+
+
+  const deleteButton =
+    document.createElement("button");
+
+  deleteButton.type = "button";
+  deleteButton.className = "delete";
+  deleteButton.textContent = "削除";
+
+  deleteButton.onclick = () => {
+    div.remove();
+  };
+
+
+  div.appendChild(nameInput);
+  div.appendChild(urlInput);
+  div.appendChild(deleteButton);
+
+  container.appendChild(div);
+}
+
+
+/* =========================
+   配列取得
+========================= */
+
+function getArray(name) {
+
+  const container =
+    document.getElementById(name);
+
+  const inputs =
+    container.querySelectorAll("input, select");
+
+  return Array.from(inputs)
+    .map(input => {
+
+      if (input.type === "number") {
+        return input.value === ""
+          ? null
+          : Number(input.value);
+      }
+
+      return input.value.trim();
+    })
+    .filter(value =>
+      value !== "" &&
+      value !== null
+    );
+}
+
+
+/* =========================
+   出典取得
+========================= */
+
+function getSources() {
+
+  const container =
+    document.getElementById("sources");
+
+  const items =
+    container.querySelectorAll(".source-item");
+
+  return Array.from(items)
+    .map(item => {
+
+      const inputs =
+        item.querySelectorAll("input");
+
+      return {
+        name: inputs[0].value.trim(),
+        url: inputs[1].value.trim()
+      };
+
+    })
+    .filter(source =>
+      source.name || source.url
+    );
+}
+
+
+/* =========================
+   日付変換
+========================= */
+
+function convertDate(value) {
+
+  if (!value.trim()) {
+    return "";
+  }
+
+  const match =
+    value.trim().match(
+      /^(\d{4})[\/\-](\d{1,2})[\/\-](\d{1,2})$/
+    );
+
+  if (!match) {
+    throw new Error(
+      "リリース日は「2026/9/27」の形式で入力してください。"
+    );
+  }
+
+  const year = match[1];
+  const month = String(match[2]).padStart(2, "0");
+  const day = String(match[3]).padStart(2, "0");
+
+  return `${year}-${month}-${day}`;
+}
+
+
+/* =========================
+   長さ変換
+========================= */
+
+function convertDuration(value) {
+
+  if (!value.trim()) {
+    return null;
+  }
+
+  const match =
+    value.trim().match(
+      /^(\d+):([0-5]\d)$/
+    );
+
+  if (!match) {
+    throw new Error(
+      "曲の長さは「3:14」の形式で入力してください。"
+    );
+  }
+
+  const minutes =
+    Number(match[1]);
+
+  const seconds =
+    Number(match[2]);
+
+  return minutes * 60 + seconds;
+}
+
+
+/* =========================
+   JSON作成
+========================= */
+
+function createMusicData() {
+
+  const id =
+    document.getElementById("id")
+      .value.trim();
+
+  const title =
+    document.getElementById("title")
+      .value.trim();
+
+  if (!id) {
+    throw new Error(
+      "IDを入力してください。"
+    );
+  }
+
+  if (!title) {
+    throw new Error(
+      "曲名を入力してください。"
+    );
+  }
+
+
+  return {
+
+    id: id,
+
+    title: title,
+
+    titleReading:
+      document.getElementById("titleReading")
+        .value.trim(),
+
+    titleEn:
+      document.getElementById("titleEn")
+        .value.trim(),
+
+
+    vocals:
+      getArray("vocals"),
+
+
+    releaseDate:
+      convertDate(
+        document.getElementById("releaseDate")
+          .value
+      ),
+
+
+    albums:
+      getArray("albums"),
+
+
+    categories:
+      getArray("categories"),
+
+
+    girls:
+      getArray("girls"),
+
+
+    duration:
+      convertDuration(
+        document.getElementById("duration")
+          .value
+      ),
+
+
+    tempo:
+      getArray("tempo"),
+
+
+    timeSignature:
+      getArray("timeSignature"),
+
+
+    key:
+      getArray("key"),
+
+
+    lyricsStart:
+      document.getElementById("lyricsStart")
+        .value,
+
+
+    description:
+      document.getElementById("description")
+        .value,
+
+
+    urls: {
+
+      youtube:
+        document.getElementById("youtube")
+          .value.trim(),
+
+      niconico:
+        document.getElementById("niconico")
+          .value.trim()
+
+    },
+
+
+    notes:
+      getArray("notes"),
+
+
+    related:
+      getArray("related"),
+
+
+    sources:
+      getSources()
+
+  };
+}
+
+
+/* =========================
+   JSON生成
+========================= */
+
+function generateJSON() {
+
+  const error =
+    document.getElementById("error");
+
+  const success =
+    document.getElementById("success");
+
+  error.textContent = "";
+  success.textContent = "";
+
+  try {
+
+    const data =
+      createMusicData();
+
+    document.getElementById("jsonOutput")
+      .value =
+      JSON.stringify(data, null, 2);
+
+  } catch (e) {
+
+    error.textContent =
+      e.message;
+
+  }
+}
+
+
+/* =========================
+   JSONコピー
+========================= */
+
+async function copyJSON() {
+
+  const error =
+    document.getElementById("error");
+
+  const success =
+    document.getElementById("success");
+
+  error.textContent = "";
+  success.textContent = "";
+
+  try {
+
+    const output =
+      document.getElementById("jsonOutput");
+
+    if (!output.value) {
+      generateJSON();
+    }
+
+    if (!output.value) {
+      return;
+    }
+
+    await navigator.clipboard.writeText(
+      output.value
+    );
+
+    success.textContent =
+      "JSONをコピーしました。";
+
+  } catch (e) {
+
+    error.textContent =
+      "JSONのコピーに失敗しました。";
+
+  }
+}
+
+
+/* =========================
+   ダウンロード
+========================= */
+
+function downloadJSON() {
+
+  const error =
+    document.getElementById("error");
+
+  const success =
+    document.getElementById("success");
+
+  error.textContent = "";
+  success.textContent = "";
+
+  try {
+
+    const data =
+      createMusicData();
+
+    const json =
+      JSON.stringify(data, null, 2);
+
+    const blob =
+      new Blob(
+        [json],
+        { type: "application/json" }
+      );
+
+    const url =
+      URL.createObjectURL(blob);
+
+    const a =
+      document.createElement("a");
+
+    a.href = url;
+
+    a.download =
+      data.id + ".json";
+
+    a.click();
+
+    URL.revokeObjectURL(url);
+
+  } catch (e) {
+
+    error.textContent =
+      e.message;
+
+  }
+}
+
+
+/* =========================
+   クリア
+========================= */
+
+function clearForm() {
+
+  if (!confirm(
+    "入力内容をすべて消しますか？"
+  )) {
+    return;
+  }
+
+  location.reload();
+}
+
+
+/* =========================
+   初期状態
+========================= */
+
+addArrayItem("vocals");
+
+addCategory();
+
+addSource();
+
+</script>
+
+</body>
+</html>
