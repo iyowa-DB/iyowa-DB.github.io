@@ -26,10 +26,12 @@
   "key": [],
   "lyricsStart": "言葉を選んで 空気を読みまくって 生きてくのしんどくない?",
   "description": "処女作\n唐突に隕石が降ってきたお話（概要欄より）",
-  "urls": {
-    "youtube": "",
-    "niconico": "https://www.nicovideo.jp/watch/sm32737912"
-  },
+  "urls": [
+    {
+      "name": "ニコニコ動画"
+      "url": "https://www.nicovideo.jp/watch/sm32737912"
+    }
+  ],
   "notes": [
     "伝説の始まり"
   ],
@@ -79,10 +81,12 @@
   "key": [],
   "lyricsStart": "いたって平和なクラスルームから 流れ出す悪い噂",
   "description": "闇堕ち女の子の曲（概要欄より）",
-  "urls": {
-    "youtube": "",
-    "niconico": "https://www.nicovideo.jp/watch/sm32906820"
-  },
+  "urls": [
+    {
+      "name": "ニコニコ動画"
+      "url": "https://www.nicovideo.jp/watch/sm32906820"
+    }
+  ],
   "notes": [
     "昨非今是（さくひこんぜ）→境遇や考え方が変わって、きのう悪いと思ったことがきょうは正しいと思われること。",
     "イノセンス→無罪"
