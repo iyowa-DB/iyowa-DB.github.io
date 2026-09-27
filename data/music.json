@@ -1,3 +1,62 @@
 [
+  {
+    "id": "Syumatsuno-otenki",
 
+    "title": "終末のお天気",
+    "titleReading": "しゅうまつのおてんき",
+    "titleEn": "",
+
+    "vocals": [
+      "flower"
+    ],
+
+    "releaseDate": "2026-01-01",
+
+    "albums": [
+      "album-001"
+    ],
+
+    "categories": [
+      "オリジナル"
+    ],
+
+    "girls": [
+      "girl-001",
+      "girl-002"
+    ],
+
+    "duration": 215（秒数）,
+
+    "tempo": [
+      120,
+      180
+    ],
+
+    "timeSignature": [
+      "4/4",
+      "3/4"
+    ],
+
+    "key": [
+      "C major",
+      "E minor"
+    ],
+
+    "lyricsStart": "歌詞の冒頭",
+
+    "description": "曲についての解説",
+
+    "urls": {
+      "youtube": "https://...",
+      "niconico": "https://..."
+    },
+
+    "notes": [
+      "備考"
+    ],
+
+    "related": [
+      "関連曲"
+    ]
+  }
 ]
