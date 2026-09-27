@@ -10,10 +10,9 @@
       "flower"
     ],
 
-    "releaseDate": "2026-01-01",
+    "releaseDate": "2018-02-14",
 
     "albums": [
-      "album-001"
     ],
 
     "categories": [
@@ -21,25 +20,21 @@
     ],
 
     "girls": [
-      "girl-001",
-      "girl-002"
+      "Oteko",
     ],
 
-    "duration": 215（秒数）,
+    "duration": 253,
 
     "tempo": [
-      120,
-      180
+      242
     ],
 
     "timeSignature": [
-      "4/4",
-      "3/4"
+      "4/4"
     ],
 
     "key": [
-      "C major",
-      "E minor"
+      "C major"
     ],
 
     "lyricsStart": "歌詞の冒頭",
