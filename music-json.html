@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -108,6 +109,17 @@
       flex: 1;
     }
 
+    .named-item {
+      display: grid;
+      grid-template-columns: 1fr 1fr auto;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .named-item input {
+      width: 100%;
+    }
+
     button {
       padding: 8px 14px;
       border: 1px solid #111;
@@ -190,6 +202,10 @@
       .duration-input input {
         max-width: none;
       }
+
+      .named-item {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
@@ -197,8 +213,9 @@
 <body>
 
 <main>
-  
+
   <h1>いよわ曲データ作成</h1>
+
 
   <section>
     <h2>基本情報</h2>
@@ -230,23 +247,29 @@
 
     <div class="field">
       <label>ボーカル</label>
+
       <div id="vocals"></div>
 
-      <button type="button" class="secondary"
-              onclick="addArrayItem('vocals')">
-        + ボーカルを追加
+      <button
+        type="button"
+        class="secondary"
+        onclick="addArrayItem('vocals')"
+      >
+        ＋ ボーカルを追加
       </button>
     </div>
 
 
     <div class="field">
       <label for="releaseDate">リリース日</label>
+
       <input
         id="releaseDate"
         type="text"
         inputmode="numeric"
         placeholder="2026/9/27"
       >
+
       <div class="hint">
         例：2026/9/27 → JSONでは 2026-09-27
       </div>
@@ -254,13 +277,21 @@
 
 
     <div class="field">
-      <label>アルバムID</label>
+      <label>アルバム</label>
+
       <div id="albums"></div>
 
-      <button type="button" class="secondary"
-              onclick="addArrayItem('albums')">
-        + アルバムを追加
+      <button
+        type="button"
+        class="secondary"
+        onclick="addAlbum()"
+      >
+        ＋ アルバムを追加
       </button>
+
+      <div class="hint">
+        アルバム名とアルバムIDを入力してください。
+      </div>
     </div>
 
 
@@ -269,9 +300,12 @@
 
       <div id="categories"></div>
 
-      <button type="button" class="secondary"
-              onclick="addCategory()">
-        + カテゴリを追加
+      <button
+        type="button"
+        class="secondary"
+        onclick="addCategory()"
+      >
+        ＋ カテゴリを追加
       </button>
 
       <div class="hint">
@@ -281,14 +315,21 @@
 
 
     <div class="field">
-      <label>いよわガールズID</label>
+      <label>いよわガールズ</label>
 
       <div id="girls"></div>
 
-      <button type="button" class="secondary"
-              onclick="addArrayItem('girls')">
-        + ガールを追加
+      <button
+        type="button"
+        class="secondary"
+        onclick="addGirl()"
+      >
+        ＋ ガールを追加
       </button>
+
+      <div class="hint">
+        キャラクター名とキャラクターIDを入力してください。
+      </div>
     </div>
 
 
@@ -315,9 +356,12 @@
 
       <div id="tempo"></div>
 
-      <button type="button" class="secondary"
-              onclick="addArrayItem('tempo', 'number')">
-        + BPMを追加
+      <button
+        type="button"
+        class="secondary"
+        onclick="addArrayItem('tempo', 'number')"
+      >
+        ＋ BPMを追加
       </button>
     </div>
 
@@ -327,9 +371,12 @@
 
       <div id="timeSignature"></div>
 
-      <button type="button" class="secondary"
-              onclick="addArrayItem('timeSignature')">
-        + 拍子を追加
+      <button
+        type="button"
+        class="secondary"
+        onclick="addArrayItem('timeSignature')"
+      >
+        ＋ 拍子を追加
       </button>
     </div>
 
@@ -339,15 +386,19 @@
 
       <div id="key"></div>
 
-      <button type="button" class="secondary"
-              onclick="addKey()">
-        + キーを追加
+      <button
+        type="button"
+        class="secondary"
+        onclick="addKey()"
+      >
+        ＋ キーを追加
       </button>
 
       <div class="hint">
         曲中で変化する場合は複数登録。
       </div>
     </div>
+
   </section>
 
 
@@ -366,6 +417,7 @@
         著作権に配慮して、必要最小限の短い引用
       </div>
     </div>
+
 
     <div class="field">
       <label for="description">説明</label>
@@ -411,9 +463,12 @@
 
       <div id="notes"></div>
 
-      <button type="button" class="secondary"
-              onclick="addArrayItem('notes')">
-        + メモを追加
+      <button
+        type="button"
+        class="secondary"
+        onclick="addArrayItem('notes')"
+      >
+        ＋ メモを追加
       </button>
     </div>
 
@@ -423,9 +478,12 @@
 
       <div id="related"></div>
 
-      <button type="button" class="secondary"
-              onclick="addArrayItem('related')">
-        + 関連曲を追加
+      <button
+        type="button"
+        class="secondary"
+        onclick="addArrayItem('related')"
+      >
+        ＋ 関連曲を追加
       </button>
     </div>
   </section>
@@ -436,9 +494,12 @@
 
     <div id="sources"></div>
 
-    <button type="button" class="secondary"
-            onclick="addSource()">
-      + 出典を追加
+    <button
+      type="button"
+      class="secondary"
+      onclick="addSource()"
+    >
+      ＋ 出典を追加
     </button>
   </section>
 
@@ -448,22 +509,34 @@
 
     <div class="actions">
 
-      <button type="button" onclick="generateJSON()">
+      <button
+        type="button"
+        onclick="generateJSON()"
+      >
         JSONを生成
       </button>
 
-      <button type="button" class="secondary"
-              onclick="copyJSON()">
+      <button
+        type="button"
+        class="secondary"
+        onclick="copyJSON()"
+      >
         JSONをコピー
       </button>
 
-      <button type="button" class="secondary"
-              onclick="downloadJSON()">
+      <button
+        type="button"
+        class="secondary"
+        onclick="downloadJSON()"
+      >
         JSONをダウンロード
       </button>
 
-      <button type="button" class="secondary"
-              onclick="clearForm()">
+      <button
+        type="button"
+        class="secondary"
+        onclick="clearForm()"
+      >
         入力をクリア
       </button>
 
@@ -544,8 +617,6 @@ const keys = [
 
 const arrayTypes = {
   vocals: "text",
-  albums: "text",
-  girls: "text",
   tempo: "number",
   timeSignature: "text",
   notes: "text",
@@ -570,7 +641,7 @@ function getToday() {
 
 
 /* =========================
-   配列入力
+   通常の配列入力
 ========================= */
 
 function addArrayItem(name, type = null, value = "") {
@@ -607,6 +678,106 @@ function addArrayItem(name, type = null, value = "") {
   };
 
   div.appendChild(input);
+  div.appendChild(deleteButton);
+
+  container.appendChild(div);
+}
+
+
+/* =========================
+   アルバム
+========================= */
+
+function addAlbum(name = "", id = "") {
+
+  const container =
+    document.getElementById("albums");
+
+  const div =
+    document.createElement("div");
+
+  div.className = "named-item";
+
+  const nameInput =
+    document.createElement("input");
+
+  nameInput.type = "text";
+  nameInput.placeholder = "アルバム名";
+  nameInput.value = name;
+
+
+  const idInput =
+    document.createElement("input");
+
+  idInput.type = "text";
+  idInput.placeholder = "アルバムID";
+  idInput.value = id;
+
+
+  const deleteButton =
+    document.createElement("button");
+
+  deleteButton.type = "button";
+  deleteButton.className = "delete";
+  deleteButton.textContent = "削除";
+
+  deleteButton.onclick = () => {
+    div.remove();
+  };
+
+
+  div.appendChild(nameInput);
+  div.appendChild(idInput);
+  div.appendChild(deleteButton);
+
+  container.appendChild(div);
+}
+
+
+/* =========================
+   いよわガールズ
+========================= */
+
+function addGirl(name = "", id = "") {
+
+  const container =
+    document.getElementById("girls");
+
+  const div =
+    document.createElement("div");
+
+  div.className = "named-item";
+
+  const nameInput =
+    document.createElement("input");
+
+  nameInput.type = "text";
+  nameInput.placeholder = "キャラクター名";
+  nameInput.value = name;
+
+
+  const idInput =
+    document.createElement("input");
+
+  idInput.type = "text";
+  idInput.placeholder = "キャラクターID";
+  idInput.value = id;
+
+
+  const deleteButton =
+    document.createElement("button");
+
+  deleteButton.type = "button";
+  deleteButton.className = "delete";
+  deleteButton.textContent = "削除";
+
+  deleteButton.onclick = () => {
+    div.remove();
+  };
+
+
+  div.appendChild(nameInput);
+  div.appendChild(idInput);
   div.appendChild(deleteButton);
 
   container.appendChild(div);
@@ -653,6 +824,7 @@ function addCategory(value = "") {
     select.appendChild(option);
   });
 
+
   const deleteButton =
     document.createElement("button");
 
@@ -663,6 +835,7 @@ function addCategory(value = "") {
   deleteButton.onclick = () => {
     div.remove();
   };
+
 
   div.appendChild(select);
   div.appendChild(deleteButton);
@@ -711,6 +884,7 @@ function addKey(value = "") {
     select.appendChild(option);
   });
 
+
   const deleteButton =
     document.createElement("button");
 
@@ -721,6 +895,7 @@ function addKey(value = "") {
   deleteButton.onclick = () => {
     div.remove();
   };
+
 
   div.appendChild(select);
   div.appendChild(deleteButton);
@@ -743,12 +918,14 @@ function addSource(name = "", url = "") {
 
   div.className = "source-item";
 
+
   const nameInput =
     document.createElement("input");
 
   nameInput.type = "text";
+
   nameInput.placeholder =
-    "「」(2026/09/27)";
+    "「」（2026/09/27）";
 
   nameInput.value =
     name || `「」（${getToday()}）`;
@@ -758,10 +935,12 @@ function addSource(name = "", url = "") {
     document.createElement("input");
 
   urlInput.type = "url";
+
   urlInput.placeholder =
     "https://...";
 
-  urlInput.value = url;
+  urlInput.value =
+    url;
 
 
   const deleteButton =
@@ -785,7 +964,7 @@ function addSource(name = "", url = "") {
 
 
 /* =========================
-   配列取得
+   通常の配列取得
 ========================= */
 
 function getArray(name) {
@@ -800,16 +979,49 @@ function getArray(name) {
     .map(input => {
 
       if (input.type === "number") {
+
         return input.value === ""
           ? null
           : Number(input.value);
+
       }
 
       return input.value.trim();
+
     })
     .filter(value =>
       value !== "" &&
       value !== null
+    );
+}
+
+
+/* =========================
+   名前 + ID の配列取得
+========================= */
+
+function getNamedArray(name) {
+
+  const container =
+    document.getElementById(name);
+
+  const items =
+    container.querySelectorAll(".named-item");
+
+  return Array.from(items)
+    .map(item => {
+
+      const inputs =
+        item.querySelectorAll("input");
+
+      return {
+        name: inputs[0].value.trim(),
+        id: inputs[1].value.trim()
+      };
+
+    })
+    .filter(item =>
+      item.name || item.id
     );
 }
 
@@ -856,18 +1068,24 @@ function convertDate(value) {
 
   const match =
     value.trim().match(
-      /^(\d{4})[\/\-](\d{1,2})[\/\-](\d{1,2})$/
+      /^(\d{4})[\/-](\d{1,2})[\/-](\d{1,2})$/
     );
 
   if (!match) {
+
     throw new Error(
       "リリース日は「2026/9/27」の形式で入力してください。"
     );
+
   }
 
   const year = match[1];
-  const month = String(match[2]).padStart(2, "0");
-  const day = String(match[3]).padStart(2, "0");
+
+  const month =
+    String(match[2]).padStart(2, "0");
+
+  const day =
+    String(match[3]).padStart(2, "0");
 
   return `${year}-${month}-${day}`;
 }
@@ -889,9 +1107,11 @@ function convertDuration(value) {
     );
 
   if (!match) {
+
     throw new Error(
       "曲の長さは「3:14」の形式で入力してください。"
     );
+
   }
 
   const minutes =
@@ -918,16 +1138,22 @@ function createMusicData() {
     document.getElementById("title")
       .value.trim();
 
+
   if (!id) {
+
     throw new Error(
       "IDを入力してください。"
     );
+
   }
 
+
   if (!title) {
+
     throw new Error(
       "曲名を入力してください。"
     );
+
   }
 
 
@@ -958,7 +1184,7 @@ function createMusicData() {
 
 
     albums:
-      getArray("albums"),
+      getNamedArray("albums"),
 
 
     categories:
@@ -966,7 +1192,7 @@ function createMusicData() {
 
 
     girls:
-      getArray("girls"),
+      getNamedArray("girls"),
 
 
     duration:
@@ -1041,6 +1267,7 @@ function generateJSON() {
   error.textContent = "";
   success.textContent = "";
 
+
   try {
 
     const data =
@@ -1074,22 +1301,27 @@ async function copyJSON() {
   error.textContent = "";
   success.textContent = "";
 
+
   try {
 
     const output =
       document.getElementById("jsonOutput");
 
+
     if (!output.value) {
       generateJSON();
     }
+
 
     if (!output.value) {
       return;
     }
 
+
     await navigator.clipboard.writeText(
       output.value
     );
+
 
     success.textContent =
       "JSONをコピーしました。";
@@ -1118,6 +1350,7 @@ function downloadJSON() {
   error.textContent = "";
   success.textContent = "";
 
+
   try {
 
     const data =
@@ -1126,14 +1359,17 @@ function downloadJSON() {
     const json =
       JSON.stringify(data, null, 2);
 
+
     const blob =
       new Blob(
         [json],
         { type: "application/json" }
       );
 
+
     const url =
       URL.createObjectURL(blob);
+
 
     const a =
       document.createElement("a");
@@ -1144,6 +1380,7 @@ function downloadJSON() {
       data.id + ".json";
 
     a.click();
+
 
     URL.revokeObjectURL(url);
 
