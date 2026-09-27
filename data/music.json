@@ -5,7 +5,7 @@
   "titleReading": "しゅうまつのおてんき",
   "titleEn": "",
   "vocals": [
-    "flower"
+    "v_flower"
   ],
   "releaseDate": "2018-02-14",
   "albums": [],
@@ -22,7 +22,7 @@
   "timeSignature": [],
   "key": [],
   "lyricsStart": "言葉を選んで 空気を読みまくって 生きてくのしんどくない?",
-  "description": "初投稿\n唐突に隕石が降ってきたお話",
+  "description": "初投稿\n唐突に隕石が降ってきたお話（概要欄より）",
   "urls": {
     "youtube": "",
     "niconico": "https://www.nicovideo.jp/watch/sm32737912"
@@ -51,5 +51,57 @@
   ]
 },
 
+{
+  "id": "sakuhikonzeno-inosensu",
+  "title": "昨非今是のイノセンス",
+  "titleReading": "さくひこんぜのイノセンス",
+  "titleEn": "",
+  "vocals": [
+    "v_flower"
+  ],
+  "releaseDate": "2018-03-18",
+  "albums": [],
+  "categories": [
+    "オリジナル"
+  ],
+  "girls": [
+    "inoko"
+  ],
+  "duration": 164,
+  "tempo": [],
+  "timeSignature": [],
+  "key": [],
+  "lyricsStart": "いたって平和なクラスルームから 流れ出す悪い噂",
+  "description": "闇堕ち女の子の曲（概要欄より）",
+  "urls": {
+    "youtube": "",
+    "niconico": "https://www.nicovideo.jp/watch/sm32906820"
+  },
+  "notes": [
+    "昨非今是（さくひこんぜ）→境遇や考え方が変わって、きのう悪いと思ったことがきょうは正しいと思われること。",
+    "イノセンス→無罪"
+  ],
+  "related": [
+    "otomewo-odore"
+  ],
+  "sources": [
+    {
+      "name": "いよわ「昨非今是のイノセンス / flower【オリジナル曲】」ニコニコ動画（2026/09/27）",
+      "url": "https://www.nicovideo.jp/watch/sm32906820"
+    },
+    {
+      "name": "「昨非今是のイノセンス」初音ミク Wiki - atwiki（2026/09/27）",
+      "url": "https://w.atwiki.jp/hmiku/pages/44816.html"
+    },
+    {
+      "name": "「『innocence』の意味・使い方・表現・読み方」英辞郎 on the WEB（2026/09/27）",
+      "url": "https://eow.alc.co.jp/search?q=innocence"
+    },
+    {
+      "name": "「昨非今是(サクヒコンゼ)とは？ 意味や使い方」コトバンク（2026/09/27）",
+      "url": "https://yoji.jitenon.jp/yojid/1710"
+    }
+  ]
+}
 
 ]
