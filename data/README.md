@@ -4,6 +4,7 @@
     "id": "example-song",
 
     "title": "○○○○",
+    "titleReading": "読み方",
     "titleEn": "",
 
     "vocals": [
