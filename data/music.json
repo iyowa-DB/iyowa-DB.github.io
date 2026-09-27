@@ -112,6 +112,61 @@
       "url": "https://yoji.jitenon.jp/yojid/1710"
     }
   ]
+},
+
+{
+  "id": "i-maina-",
+  "title": "イーマイナー",
+  "titleReading": "いーまいなー",
+  "titleEn": "",
+  "vocals": [
+    "v_flower"
+  ],
+  "releaseDate": "2018-05-06",
+  "albums": [],
+  "categories": [
+    "オリジナル"
+  ],
+  "girls": [
+    {
+      "name": "マイ",
+      "id": "mai"
+    }
+  ],
+  "duration": 193,
+  "tempo": [
+    131
+  ],
+  "timeSignature": [],
+  "key": [
+    "Em"
+  ],
+  "lyricsStart": "持ってきたら 持って帰ってよ すてられなく なるでしょ",
+  "description": "",
+  "urls": [
+    {
+      "name": "ニコニコ動画",
+      "url": "https://www.nicovideo.jp/watch/sm33168272"
+    },
+    {
+      "name": "Youtube",
+      "url": "https://www.youtube.com/watch?v=-KEQ5JydVMg"
+    }
+  ],
+  "notes": [
+    "Youtube初投稿"
+  ],
+  "related": [],
+  "sources": [
+    {
+      "name": "いよわ「イーマイナー / flower 【オリジナル】」ニコニコ動画（2026/09/28）",
+      "url": "https://www.nicovideo.jp/watch/sm33168272"
+    },
+    {
+      "name": "「いよわ BPM（テンポ） まとめ」世界は一日にして成らず ～BPM（テンポ ）計測 まとめ～（2026/09/28）",
+      "url": "http://ongakumichi523.jp/blog-entry-15243.html"
+    }
+  ]
 }
 
 ]
