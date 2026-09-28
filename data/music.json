@@ -221,6 +221,68 @@
       "url": "https://x.com/igusuri_please/status/1018423209266274305"
     }
   ]
+},
+
+{
+  "id": "ma-si-kiringu",
+  "title": "マーシーキリング",
+  "titleReading": "まーしーきりんぐ",
+  "titleEn": "mercy killing",
+  "vocals": [
+    "初音ミク",
+    "v_flower"
+  ],
+  "releaseDate": "2018-10-19",
+  "albums": [
+    {
+      "name": "ねむるピンクノイズ",
+      "id": "1st"
+    }
+  ],
+  "categories": [
+    "オリジナル"
+  ],
+  "girls": [
+    {
+      "name": "マキリ",
+      "id": "makiri"
+    }
+  ],
+  "duration": 163,
+  "tempo": [
+    115
+  ],
+  "timeSignature": [],
+  "key": [
+    "E"
+  ],
+  "lyricsStart": "ねえ おはよう 外は雨 「そと」に出るのはおすすめしないよ",
+  "description": "",
+  "urls": [
+    {
+      "name": "ニコニコ動画",
+      "url": "https://www.nicovideo.jp/watch/sm34043723"
+    },
+    {
+      "name": "Youtube",
+      "url": "https://www.youtube.com/watch?v=BJoL1U52ebc"
+    }
+  ],
+  "notes": [],
+  "related": [
+    "otomewo-odore",
+    "mukono-anata"
+  ],
+  "sources": [
+    {
+      "name": "いよわ「マーシーキリング / 初音ミク・flower」ニコニコ動画（2026/09/29）",
+      "url": "https://www.nicovideo.jp/watch/sm34043723"
+    },
+    {
+      "name": "「マーシーキリング」VocaDB（2026/09/29）",
+      "url": "https://vocadb.net/S/208890"
+    }
+  ]
 }
 
 ]
