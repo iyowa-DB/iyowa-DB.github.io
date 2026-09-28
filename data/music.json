@@ -129,8 +129,8 @@
   ],
   "girls": [
     {
-      "name": "マイ",
-      "id": "mai"
+      "name": "イーマイナーちゃん",
+      "id": "i-maina-"
     }
   ],
   "duration": 193,
@@ -165,6 +165,60 @@
     {
       "name": "「いよわ BPM（テンポ） まとめ」世界は一日にして成らず ～BPM（テンポ ）計測 まとめ～（2026/09/28）",
       "url": "http://ongakumichi523.jp/blog-entry-15243.html"
+    }
+  ]
+},
+
+{
+  "id": "otomewo-odore",
+  "title": "乙女を踊れ",
+  "titleReading": "おとめをおどれ",
+  "titleEn": "",
+  "vocals": [
+    "初音ミク"
+  ],
+  "releaseDate": "2018-07-15",
+  "albums": [],
+  "categories": [
+    "オリジナル"
+  ],
+  "girls": [
+    {
+      "name": "乙女ちゃん",
+      "id": "otome"
+    }
+  ],
+  "duration": 267,
+  "tempo": [],
+  "timeSignature": [],
+  "key": [],
+  "lyricsStart": "この世界はまるでダンスホールだ 身を躍らせて今日も生きるの",
+  "description": " 乙女として強く生きる女の子の曲（概要欄より）",
+  "urls": [
+    {
+      "name": "niconico",
+      "url": "https://www.nicovideo.jp/watch/sm33529926"
+    }
+  ],
+  "notes": [
+    "初・初音ミク曲",
+    "ドラム以外生演奏"
+  ],
+  "related": [
+    "ma-si-kiringu"
+  ],
+  "sources": [
+    {
+      "name": "いよわ「乙女を踊れ / 初音ミク 【オリジナル】」ニコニコ動画（2026/09/28）",
+      "url": "https://www.nicovideo.jp/watch/sm33529926"
+    },
+    {
+      "name": "「いよわガールズ」ピクシブ百科事典（2026/09/28）",
+      "url": "https://dic.pixiv.net/a/いよわガールズ"
+    },
+    {
+      "name": "いよわ　2018年7月15日・X投稿（2026/09/28）",
+      "url": "https://x.com/igusuri_please/status/1018423209266274305"
     }
   ]
 }
