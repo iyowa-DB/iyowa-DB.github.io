@@ -253,9 +253,7 @@
     115
   ],
   "timeSignature": [],
-  "key": [
-    "E"
-  ],
+  "key": [],
   "lyricsStart": "ねえ おはよう 外は雨 「そと」に出るのはおすすめしないよ",
   "description": "",
   "urls": [
@@ -281,6 +279,69 @@
     {
       "name": "「マーシーキリング」VocaDB（2026/09/29）",
       "url": "https://vocadb.net/S/208890"
+    }
+  ]
+},
+
+{
+  "id": "suisitaini-modoranaide",
+  "title": "水死体にもどらないで",
+  "titleReading": "すいしたいにもどらないで",
+  "titleEn": "",
+  "vocals": [
+    "初音ミク",
+    "v_flower"
+  ],
+  "releaseDate": "2018-12-14",
+  "albums": [
+    {
+      "name": "ねむるピンクノイズ",
+      "id": "1st"
+    }
+  ],
+  "categories": [
+    "オリジナル"
+  ],
+  "girls": [
+    {
+      "name": "水死体ちゃん",
+      "id": "suisitai"
+    }
+  ],
+  "duration": 232,
+  "tempo": [
+    120
+  ],
+  "timeSignature": [],
+  "key": [],
+  "lyricsStart": "きみはあらわれた それは突然だった 寂しいくらい よく知ってる顔だったから",
+  "description": "",
+  "urls": [
+    {
+      "name": "ニコニコ動画",
+      "url": "https://www.nicovideo.jp/watch/sm34318335"
+    },
+    {
+      "name": "Youtube",
+      "url": "https://www.youtube.com/watch?v=1bTQMYnEf_Y&list=OLAK5uy_lM6ZtLH1hiXJ6Imiyji54x3sRnRuinllQ&index=11"
+    }
+  ],
+  "notes": [
+    "いよわさんがセンター1ヶ月前に作った"
+  ],
+  "related": [],
+  "sources": [
+    {
+      "name": "いよわ「水死体にもどらないで / 初音ミク・flower」ニコニコ動画（2026/09/30）",
+      "url": "https://www.nicovideo.jp/watch/sm34318335"
+    },
+    {
+      "name": "「水死体に戻らないで」VocaDB（2026/09/30）",
+      "url": "https://vocadb.net/S/217908"
+    },
+    {
+      "name": "いよわ　2020年7月29日・x投稿（2026/09/30）",
+      "url": "https://x.com/igusuri_please/status/1288454189127839745"
     }
   ]
 }
