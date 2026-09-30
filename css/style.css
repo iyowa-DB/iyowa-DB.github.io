@@ -1,0 +1,130 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: sans-serif;
+  background: #fff;
+  color: #111;
+}
+
+header {
+  border-bottom: 1px solid #ddd;
+  padding: 20px;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 24px;
+}
+
+main {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 30px 20px;
+}
+
+.search {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.search input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+.search button {
+  padding: 10px 20px;
+  border: 1px solid #222;
+  background: #222;
+  color: white;
+  cursor: pointer;
+}
+
+.filters {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+details {
+  border: 1px solid #ddd;
+}
+
+summary {
+  padding: 12px;
+  cursor: pointer;
+}
+
+#albumFilters,
+#categoryFilters,
+#vocalFilters,
+#girlFilters,
+#keyFilters,
+#timeSignatureFilters {
+  padding: 10px 12px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 6px;
+}
+
+.filter-option {
+  display: block;
+  padding: 5px;
+}
+
+.filter-option label {
+  cursor: pointer;
+}
+
+.filter-count {
+  color: #777;
+}
+
+.number-filter {
+  display: flex;
+  gap: 8px;
+  padding: 10px 12px;
+}
+
+.number-filter select,
+.number-filter input {
+  padding: 8px;
+}
+
+.results {
+  margin-top: 30px;
+}
+
+.results-header {
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 15px;
+}
+
+.music-card {
+  border-bottom: 1px solid #ddd;
+  padding: 15px 0;
+}
+
+.music-card h2 {
+  margin: 0 0 5px;
+  font-size: 18px;
+}
+
+.music-card a {
+  color: #111;
+  text-decoration: none;
+}
+
+.music-card a:hover {
+  text-decoration: underline;
+}
+
+.music-meta {
+  color: #666;
+  font-size: 14px;
+}
