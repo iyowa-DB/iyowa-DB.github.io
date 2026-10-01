@@ -1,129 +1,141 @@
-<!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>いよわ曲データベース</title>
-
   <link rel="stylesheet" href="./css/style.css">
 </head>
-
 <body>
 
-  <header>
+<header class="site-header">
+  <div class="container">
     <h1>いよわ曲データベース</h1>
-  </header>
+  </div>
+</header>
 
-  <main>
+<main class="container">
 
-    <section class="search">
-      <input
-        type="text"
-        id="searchInput"
-        placeholder="曲名・読み方・検索条件など"
-      >
-      <button id="searchButton">検索</button>
-    </section>
+  <section class="search-area">
+    <div class="search-box">
+      <input id="searchInput" type="search" placeholder="曲名・読み方などを検索">
+      <button id="searchButton" type="button">検索</button>
+    </div>
 
-    <section class="filters">
+    <details class="advanced-filter">
+      <summary>絞り込み</summary>
 
-      <details>
-        <summary>アルバム</summary>
-        <div id="albumFilters"></div>
-      </details>
-
-      <details>
-        <summary>カテゴリ</summary>
-        <div id="categoryFilters"></div>
-      </details>
-
-      <details>
-        <summary>ボーカル</summary>
-        <div id="vocalFilters"></div>
-      </details>
-
-      <details>
-        <summary>いよわガールズ</summary>
-        <div id="girlFilters"></div>
-      </details>
-
-      <details>
-        <summary>BPM</summary>
-
-        <div class="number-filter">
-          <select id="tempoOperator">
-            <option value="eq">ちょうど</option>
-            <option value="gte">以上</option>
-            <option value="lte">以下</option>
-          </select>
-
-          <input
-            type="number"
-            id="tempoValue"
-            placeholder="BPM"
-          >
+      <div class="advanced-filter-content">
+        <div class="filter-group">
+          <h3>アルバム</h3>
+          <div id="albumFilters" class="filter-options"></div>
         </div>
-      </details>
 
-      <details>
-        <summary>再生時間</summary>
-
-        <div class="number-filter">
-          <select id="durationOperator">
-            <option value="eq">ちょうど</option>
-            <option value="gte">以上</option>
-            <option value="lte">以下</option>
-          </select>
-
-          <input
-            type="number"
-            id="durationValue"
-            placeholder="秒"
-          >
+        <div class="filter-group">
+          <h3>カテゴリ</h3>
+          <div id="categoryFilters" class="filter-options"></div>
         </div>
-      </details>
 
-      <details>
-        <summary>公開日</summary>
-
-        <div class="number-filter">
-          <select id="dateOperator">
-            <option value="eq">ちょうど</option>
-            <option value="lte">以前</option>
-            <option value="gte">以降</option>
-          </select>
-
-          <input
-            type="date"
-            id="dateValue"
-          >
+        <div class="filter-group">
+          <h3>ボーカル</h3>
+          <div id="vocalFilters" class="filter-options"></div>
         </div>
-      </details>
 
-      <details>
-        <summary>キー</summary>
-        <div id="keyFilters"></div>
-      </details>
+        <div class="filter-group">
+          <h3>いよわガールズ</h3>
+          <div id="girlFilters" class="filter-options"></div>
+        </div>
 
-      <details>
-        <summary>拍子</summary>
-        <div id="timeSignatureFilters"></div>
-      </details>
+        <div class="filter-group">
+          <h3>BPM</h3>
+          <div class="number-filter">
+            <select id="tempoOperator">
+              <option value="eq">ちょうど</option>
+              <option value="gte">以上</option>
+              <option value="lte">以下</option>
+            </select>
+            <input id="tempoValue" type="number" min="0" placeholder="BPM">
+          </div>
+        </div>
 
-    </section>
+        <div class="filter-group">
+          <h3>再生時間</h3>
+          <div class="number-filter">
+            <select id="durationOperator">
+              <option value="eq">ちょうど</option>
+              <option value="gte">以上</option>
+              <option value="lte">以下</option>
+            </select>
+            <input id="durationValue" type="number" min="0" placeholder="秒">
+          </div>
+        </div>
 
-    <section class="results">
-      <div class="results-header">
-        <p id="resultCount"></p>
+        <div class="filter-group">
+          <h3>公開日</h3>
+          <div class="number-filter">
+            <select id="dateOperator">
+              <option value="eq">ちょうど</option>
+              <option value="lte">以前</option>
+              <option value="gte">以降</option>
+            </select>
+            <input id="dateValue" type="date">
+          </div>
+        </div>
+
+        <div class="filter-group">
+          <h3>キー</h3>
+          <div id="keyFilters" class="filter-options"></div>
+        </div>
+
+        <div class="filter-group">
+          <h3>拍子</h3>
+          <div id="timeSignatureFilters" class="filter-options"></div>
+        </div>
+
+        <button id="clearFilters" class="clear-button" type="button">
+          絞り込みをクリア
+        </button>
       </div>
+    </details>
+  </section>
 
-      <div id="results"></div>
-    </section>
+  <section class="category-section">
+    <div class="section-heading">
+      <h2>アルバム</h2>
+    </div>
+    <div id="albumCards" class="category-grid"></div>
+  </section>
 
-  </main>
+  <section class="category-section">
+    <div class="section-heading">
+      <h2>ボーカル</h2>
+    </div>
+    <div id="vocalCards" class="category-grid"></div>
+  </section>
 
-  <script src="./js/index.js"></script>
+  <section class="category-section">
+    <div class="section-heading">
+      <h2>いよわガールズ</h2>
+    </div>
+    <div id="girlCards" class="category-grid"></div>
+  </section>
 
+  <section class="category-section">
+    <div class="section-heading">
+      <h2>カテゴリ</h2>
+    </div>
+    <div id="categoryCards" class="category-grid"></div>
+  </section>
+
+  <section id="searchResultsSection" class="results-section" hidden>
+    <div class="section-heading">
+      <h2>検索結果</h2>
+      <p id="resultCount"></p>
+    </div>
+    <div id="results"></div>
+  </section>
+
+</main>
+
+<script src="./js/index.js"></script>
 </body>
 </html>
